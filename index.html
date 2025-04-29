@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Flash App - Conectamos usuarios con servicios locales">
+  <title>Flash App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body>
+  <!-- Pantalla de carga con logo y video intro -->
+  <div id="pantalla-video" class="pantalla" style="display:flex">
+    <div class="logo-container">
+      <div class="flash-logo">
+        <div class="text">FLASH</div>
+        <div class="globe-container">
+          <div class="globe"></div>
+          <div class="orbit"></div>
+        </div>
+      </div>
+    </div>
+    <div class="loading-animation">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- Pantalla para ingresar nombre -->
+  <div id="pantalla-01" class="pantalla">
+    <div class="logo-container">
+      <div class="flash-logo">
+        <div class="text">FLASH</div>
+        <div class="globe-container">
+          <div class="globe"></div>
+          <div class="orbit"></div>
+        </div>
+      </div>
+    </div>
+    <h1>Hola, ¿cómo te llamas?</h1>
+    <div class="input-container">
+      <i data-feather="user"></i>
+      <input type="text" id="nombreUsuario" placeholder="Escribe tu nombre" autocomplete="name">
+    </div>
+    <button onclick="aceptarNombre()" class="btn-primary">
+      <span>Continuar</span>
+      <i data-feather="arrow-right"></i>
+    </button>
+  </div>
+
+  <!-- Pantalla de selección de servicio -->
+  <div id="pantalla-02" class="pantalla">
+    <div class="logo-container">
+      <div class="flash-logo">
+        <div class="text">FLASH</div>
+        <div class="globe-container">
+          <div class="globe"></div>
+          <div class="orbit"></div>
+        </div>
+      </div>
+    </div>
+    <h1 id="saludo"></h1>
+    
+    <div class="opciones">
+      <button onclick="seleccionarOpcion('Taxi')" class="opcion-btn">
+        <i data-feather="navigation"></i>
+        <span>Taxi</span>
+      </button>
+      <button onclick="seleccionarOpcion('Mototaxi')" class="opcion-btn">
+        <i data-feather="zap"></i>
+        <span>Mototaxi</span>
+      </button>
+      <button onclick="seleccionarOpcion('Domicilio')" class="opcion-btn">
+        <i data-feather="package"></i>
+        <span>Domicilio</span>
+      </button>
+      <button onclick="seleccionarOpcion('Pago de facturas')" class="opcion-btn">
+        <i data-feather="credit-card"></i>
+        <span>Pago de facturas</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Pantalla para ingresar destino -->
+  <div id="pantalla-03" class="pantalla">
+    <div class="logo-container">
+      <div class="flash-logo">
+        <div class="text">FLASH</div>
+        <div class="globe-container">
+          <div class="globe"></div>
+          <div class="orbit"></div>
+        </div>
+      </div>
+    </div>
+    <h1>¿Dónde quieres ir?</h1>
+    <div class="input-container">
+      <i data-feather="map-pin"></i>
+      <input type="text" id="destino" placeholder="Escribe tu destino">
+    </div>
+    <button onclick="solicitarGPSDestino()" class="btn-primary">
+      <span>Solicitar servicio</span>
+      <i data-feather="send"></i>
+    </button>
+    <button onclick="volverSeleccion()" class="btn-secondary">
+      <i data-feather="arrow-left"></i>
+      <span>Volver</span>
+    </button>
+  </div>
+
+  <!-- Pantalla de carga de GPS -->
+  <div id="pantalla-gps" class="pantalla">
+    <div class="logo-container">
+      <div class="flash-logo">
+        <div class="text">FLASH</div>
+        <div class="globe-container">
+          <div class="globe"></div>
+          <div class="orbit"></div>
+        </div>
+      </div>
+    </div>
+    <div class="gps-loading">
+      <div class="pulse"></div>
+      <i data-feather="map-pin" class="gps-icon"></i>
+    </div>
+    <h2>Accediendo a tu ubicación...</h2>
+    <p>Por favor, permite el acceso a tu ubicación cuando el navegador lo solicite.</p>
+  </div>
+
+  <!-- Pantalla de error de GPS -->
+  <div id="pantalla-error-gps" class="pantalla">
+    <div class="logo-container">
+      <div class="flash-logo">
+        <div class="text">FLASH</div>
+        <div class="globe-container">
+          <div class="globe"></div>
+          <div class="orbit"></div>
+        </div>
+      </div>
+    </div>
+    <i data-feather="alert-triangle" class="error-icon"></i>
+    <h2>No pudimos acceder a tu ubicación</h2>
+    <p>Puedes continuar sin compartir tu ubicación o intentar nuevamente.</p>
+    <button onclick="reintentarGPS()" class="btn-primary">
+      <i data-feather="refresh-cw"></i>
+      <span>Intentar nuevamente</span>
+    </button>
+    <button onclick="continuarSinGPS()" class="btn-secondary">
+      <span>Continuar sin ubicación</span>
+    </button>
+  </div>
+
+  <script src="js/app.js"></script>
+  <a href="https://wa.me/573204006436?text=Quiero%20trabajar%20con%20ustedes" target="_blank" class="mensaje-final">¿Quieres trabajar con nosotros?</a>
+</body>
+</html>
